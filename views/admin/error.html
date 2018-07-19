@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<div class="title_left">
+  <h3>错误提示 <small></small></h3>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    {% if url %}
+      <a href="{{url}}">点击这里跳转</a>
+    {% else %}
+      {{message}}
+      <a href="jacascript:window.history.back();">返回上一步</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

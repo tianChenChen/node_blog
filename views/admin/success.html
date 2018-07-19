@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<div class="title_left">
+  <h3>成功提示 <small></small></h3>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+      {{message}}
+      <a href="{{url}}">点击这里跳转</a>
+      
+  </div>
+</div>
+{% endblock %}
