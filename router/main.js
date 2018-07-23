@@ -32,6 +32,7 @@ router.get('/', function(req, res, next){
     return Content.find().limit(limit).skip(skip).populate(['category', 'user'])
   }).then(function(contents){
     data.contents = contents
+    console.log(data, 'skj')
     res.render('main/index', data)
   })
 })
