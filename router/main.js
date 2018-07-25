@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var Category =  require('../models/Category')
+var Content = require('../models/Content')
 
 // 首页
 router.get('/', function(req, res, next){
@@ -29,7 +30,7 @@ router.get('/', function(req, res, next){
     data.page = Math.max(data.page, 1);
     var skip = (data.page - 1) * data.limit;
 
-    return Content.find().limit(limit).skip(skip).populate(['category', 'user'])
+    return Content.find().limit(data.limit).skip(skip).populate(['category', 'user'])
   }).then(function(contents){
     data.contents = contents
     console.log(data, 'skj')
