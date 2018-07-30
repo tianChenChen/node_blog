@@ -19,9 +19,18 @@
 
 	<nav>
 		<div class="menu">
-	    	<a href="/" class="focus">首页</a>
+            {% if category == '' %}
+            <a href="/" class="focus">首页</a>
+            {% else %}
+            <a href="/">首页</a>
+            {% endif %}
+
             {% for item in categories %}
-            <a href="/">{{item.name}}</a>
+                {% if category == item.id %}
+                    <a href="/?category={{item.id}}" class="focus">{{item.name}}</a>
+                {% else %}
+                    <a href="/?category={{item.id}}">{{item.name}}</a>
+                {% endif %}
             {% endfor %}
 	    </div>
 	</nav>
@@ -51,19 +60,21 @@
                         {% if page <= 1 %}
             			<span>没有上一页了</span>
                         {% else %}
-                        <a href="/?page={{page - 1}}">上一页</a>
+                        <a href="/?category={{category}}&page={{page - 1}}">上一页</a>
                         {% endif %}
             		</li>
 
-            		<li>
+                    {% if page > 0%}
+                    <li>
             			<strong>{{page}} / {{pages}}</strong>
-            		</li>
+                    </li>
+                    {% endif %}
 
             		<li class="next">
                         {% if page >= pages %}
                         <span>没有下一页了</span>
                         {% else %}
-            			<a href="/?page={{page + 1}}">下一页</a>
+            			<a href="/?category={{category}}&page={{page + 1}}">下一页</a>
                         {% endif %}
             		</li>
             		
