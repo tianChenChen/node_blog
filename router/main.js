@@ -43,5 +43,12 @@ router.get('/', function(req, res, next){
   })
 })
 
+router.get('/view', function(req, res){
+  var contentId = req.query.contentid || ''
+
+  Content.findOne({
+    
+  })
+})
 
 module.exports = router
